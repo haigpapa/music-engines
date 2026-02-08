@@ -1,16 +1,41 @@
-# React + Vite
+# Music Engines Frontend
+> **A modern React SPA for visualizing deep audio analysis.**
+> *React • Vite • Tailwind CSS • Brutalist Neumorphism*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This frontend provides the interface for the Totality Engine. It is built as a Single Page Application (SPA) and served by the Flask backend in production.
 
-Currently, two official plugins are available:
+## Design Philosophy: "Minimal Brutalist Neumorphism"
+The UI combines two distinct styles:
+1.  **Brutalism**: Bold typography, high contrast, stark layout.
+2.  **Neumorphism**: Soft, extruded shadows for interactive elements (`box-shadow`), creating a tactile feel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Architecture
 
-## React Compiler
+### Connectivity
+-   **Upload**: `POST /analyze` -> Returns `job_id`.
+-   **Polling**: `GET /jobs/<job_id>` -> Polls every 2s until `completed`.
+-   **State**: Managed via `useAnalysis.js` hook.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Key Components
+-   `src/components/UploadZone.jsx`: Handles file drag-and-drop with neumorphic press states.
+-   `src/components/AnalysisDashboard.jsx`: Visualizes complex nested JSON data (Resonance, Hit Science).
+-   `src/index.css`: Contains the custom Tailwind utility classes for the design system.
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Setup
+```bash
+npm install
+```
+
+### Dev Server (Standalone)
+Runs on port 5173. Note: API calls will fail unless you configure a proxy to Flask (5001).
+```bash
+npm run dev
+```
+
+### Production Build
+Builds to `dist/`, which is then served by `server.py`.
+```bash
+npm run build
+```

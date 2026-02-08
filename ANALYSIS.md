@@ -31,3 +31,43 @@ Located in `frontend`.
 - **Stack**: React (Vite), Tailwind CSS.
 - **Design System**: "Pro Audio" aesthetic. Dark mode by default (`pro-black`, `pro-gray`) with high-contrast accents (`electric-cyan`, `volt-green`, `warning-orange`).
 - **Functionality**: Basic upload and result visualization is scaffolded but not fully integrated with all engines.
+
+## Proof of Life: Sample Output
+Below is a truncated JSON response from the **Totality Engine** analyzing a test signal.
+Note the presence of cross-modal "Resonance" scores and "Hit Science" metrics.
+
+```json
+{
+  "creative": {
+    "status": "success",
+    "model": "MIT/ast-finetuned-audioset-10-10-0.4593",
+    "dimensions": 768,
+    "embedding": [0.12, -0.45, 0.88, "...", "(768 floats)"],
+    "is_muddy_mix": true,
+    "harmonic_entropy": 0.145,
+    "expectancy_violation_score": 0.089,
+    "sentiment": "Neutral",
+    "beat_strength": 0.0,
+    "languages": ["en"]
+  },
+  "resonance": {
+    "status": "success",
+    "dissonance_score": 0.114,
+    "vibe": "Anthemic Joy (Aligned)",
+    "lyrical_valence": 0.999,
+    "audio_valence": 0.771,
+    "lyrical_sentiment": "POSITIVE"
+  },
+  "audience": {
+    "hook_efficacy_prediction": "High",
+    "spectral_burstiness": 70.54
+  },
+  "industry": {
+    "artist_centrality": 0.0
+  },
+  "platform": {
+    "viral_elasticity": 0.545,
+    "optimizations": []
+  }
+}
+```
