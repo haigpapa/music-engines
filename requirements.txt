@@ -1,0 +1,29 @@
+# Totality Engine Dependencies
+
+# Core
+sqlmodel
+fastapi # If needed for API later
+uvicorn
+flask
+flask-cors
+
+# Creative Engines (CLI)
+ffmpeg-python # Optional wrapper, though we use subprocess currently
+
+# Hit Science (Frozen Meteorite Integration)
+networkx
+pandas
+numpy
+scipy
+librosa
+# essentia # specific install often needed
+# lingpy
+transformers
+torch
+torchaudio
+celery
+redis
+neo4j
+python-dotenv
+requests
+python-multipart

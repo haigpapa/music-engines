@@ -1,0 +1,96 @@
+Scanning totality_engine/engines...
+
+Checking totality_engine.engines.comparison...
+  Found class candidate: ComparisonEngine
+  [PASS] Successfully instantiated ComparisonEngine
+
+Checking totality_engine.engines.hit_science.pipeline...
+  Found class candidate: HitSciencePipeline
+Initializing Hit Science Pipeline...
+  [PASS] Successfully instantiated HitSciencePipeline
+
+Checking totality_engine.engines.hit_science.systems.platform.optimization...
+  Found class candidate: PlatformOptimizer
+  [PASS] Successfully instantiated PlatformOptimizer
+
+Checking totality_engine.engines.hit_science.systems.platform.virality...
+  Found class candidate: ViralityEngine
+  [PASS] Successfully instantiated ViralityEngine
+
+Checking totality_engine.engines.hit_science.systems.industry.graph_model...
+  Found class candidate: IndustryGraph
+  [PASS] Successfully instantiated IndustryGraph
+
+Checking totality_engine.engines.hit_science.systems.industry.centrality...
+  Found class candidate: NetworkAnalyst
+  [PASS] Successfully instantiated NetworkAnalyst
+
+Checking totality_engine.engines.hit_science.systems.market.risk_map...
+  Found class candidate: MarketRiskEngine
+  [PASS] Successfully instantiated MarketRiskEngine
+
+Checking totality_engine.engines.hit_science.systems.market.economics...
+  Found class candidate: EconomicsEngine
+  [PASS] Successfully instantiated EconomicsEngine
+
+Checking totality_engine.engines.hit_science.systems.creative.explicitness...
+  Found class candidate: ExplicitnessDetector
+  [PASS] Successfully instantiated ExplicitnessDetector
+
+Checking totality_engine.engines.hit_science.systems.creative.code_switching...
+  Found class candidate: CodeSwitchingDetector
+  [PASS] Successfully instantiated CodeSwitchingDetector
+
+Checking totality_engine.engines.hit_science.systems.creative.nlp_engine...
+  Found class candidate: NLPEngine
+  [PASS] Successfully instantiated NLPEngine
+
+Checking totality_engine.engines.hit_science.systems.creative.audio_analyzer...
+  Found class candidate: AudioAnalyzer
+  [PASS] Successfully instantiated AudioAnalyzer
+
+Checking totality_engine.engines.hit_science.systems.creative.harmonic...
+  Found class candidate: HarmonicAnalyzer
+  [PASS] Successfully instantiated HarmonicAnalyzer
+
+Checking totality_engine.engines.hit_science.systems.audience.lift...
+  Found class candidate: LiftAnalyzer
+  [PASS] Successfully instantiated LiftAnalyzer
+
+Checking totality_engine.engines.hit_science.systems.audience.growth...
+  Found class candidate: GrowthAIEngine
+  [PASS] Successfully instantiated GrowthAIEngine
+
+Checking totality_engine.engines.hit_science.systems.audience.neuro...
+  Found class candidate: NeuroAesthetics
+  [PASS] Successfully instantiated NeuroAesthetics
+
+Checking totality_engine.engines.hit_science.systems.culture.distance...
+  Found class candidate: CulturalDistanceEngine
+  [PASS] Successfully instantiated CulturalDistanceEngine
+
+Checking totality_engine.engines.hit_science.systems.culture.identity...
+  Found class candidate: IdentityEngine
+  [PASS] Successfully instantiated IdentityEngine
+
+Checking totality_engine.engines.creative.audioscape...
+  Found class candidate: AudioscapeEngine
+  [PASS] Successfully instantiated AudioscapeEngine
+
+Checking totality_engine.engines.creative.context...
+  Found class candidate: ContextEngine
+  [PASS] Successfully instantiated ContextEngine
+
+Checking totality_engine.engines.creative.album_architect...
+  Found class candidate: AlbumArchitectEngine
+  [PASS] Successfully instantiated AlbumArchitectEngine
+
+Checking totality_engine.engines.creative.composition...
+  Found class candidate: CompositionEngine
+  [PASS] Successfully instantiated CompositionEngine
+
+Checking totality_engine.engines.creative.lyrical...
+  Found class candidate: LyricalEngine
+  [PASS] Successfully instantiated LyricalEngine
+
+Summary: 23/23 modules passed.

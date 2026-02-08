@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neu-bg: #1a1a1a;
+  --color-neu-surface: #1e1e1e;
+  --color-neu-text: #e0e0e0;
+  --color-neu-accent: #00ff41;
+  /* Cyber green */
+  --color-neu-accent-dim: #008f24;
+
+  --font-mono: "Courier New", monospace;
+  /* Ultra brutalist */
+  --font-sans: "Helvetica Neue", "Arial", sans-serif;
+
+  --shadow-neu-flat: 6px 6px 12px #0d0d0d, -6px -6px 12px #272727;
+  --shadow-neu-pressed: inset 6px 6px 12px #0d0d0d, inset -6px -6px 12px #272727;
+  --shadow-neu-extruded: 12px 12px 24px #0d0d0d, -12px -12px 24px #272727;
+}
+
+@layer base {
+  body {
+    @apply bg-neu-bg text-neu-text font-mono antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold uppercase tracking-tighter;
+  }
+}
+
+@layer components {
+  .neu-card {
+    @apply bg-neu-bg rounded-xl shadow-neu-flat p-6 border border-[#222];
+  }
+
+  .neu-btn {
+    @apply bg-neu-bg text-neu-accent font-bold px-6 py-3 rounded-lg shadow-neu-flat active:shadow-neu-pressed transition-all duration-200 hover:text-white uppercase tracking-widest border border-[#222];
+  }
+
+  .neu-input {
+    @apply bg-neu-bg w-full p-4 rounded-lg shadow-neu-pressed text-neu-text placeholder-gray-600 outline-none border-none focus:ring-1 focus:ring-neu-accent;
+  }
+
+  .neu-progress-container {
+    @apply h-4 rounded-full bg-neu-bg shadow-neu-pressed overflow-hidden;
+  }
+
+  .neu-progress-bar {
+    @apply h-full bg-neu-accent shadow-none;
+  }
+}
