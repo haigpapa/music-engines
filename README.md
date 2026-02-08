@@ -58,6 +58,8 @@ A modular pipeline carrying audio data through 6 distinct systems:
 *   `frontend/`: **React (Vite)** Source code for the Single Page Application.
 *   `verify_*.py`: Suite of rigorous validation scripts.
 
+> **Full Breakdown**: See [MODULES.md](MODULES.md) for a detailed status report of all 22 engines (Capabilities vs. Limitations).
+
 ## Quick Start
 
 The system requires **Redis** (Messaging) and **Neo4j** (Graph) to be running.
