@@ -146,5 +146,15 @@ def serve_static(path):
     return send_from_directory('frontend/dist', path)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    base_port = int(os.environ.get('PORT', 5000))
+    for port in range(base_port, base_port + 10):
+        try:
+            print(f"Attempting to start server on port {port}...")
+            app.run(host='0.0.0.0', port=port, debug=True)
+            break
+        except OSError as e:
+            if "Address already in use" in str(e) or "[Errno 98]" in str(e) or "[Errno 48]" in str(e):
+                 print(f"Port {port} is busy, trying next...")
+                 continue
+            else:
+                 raise e

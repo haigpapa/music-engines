@@ -45,7 +45,7 @@ def verify_modules():
     print(f"Scanning {root_dir}...")
     
     for subdir, dirs, files in os.walk(root_dir):
-        if "__pycache__" in subdir:
+        if "__pycache__" in subdir or "_archive" in subdir:
             continue
             
         for file in files:

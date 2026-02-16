@@ -1,29 +1,52 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import VibeRadar from './VibeRadar';
+import NetworkGraph from './NetworkGraph';
 
 const AnalysisDashboard = ({ result }) => {
     // Parsing result data
     const resonance = result?.resonance || {};
     const creative = result?.creative || {};
+    const industry = result?.industry || {};
 
     // Safety checks
     const vibe = resonance.vibe || "Undetected";
     const dissonance = resonance.dissonance_score || 0;
     const lySentiment = resonance.lyrical_sentiment || "Unknown";
+    const artistCentrality = industry.artist_centrality || 0;
 
     // Creative metrics
     const tempo = creative.tempo ? Math.round(creative.tempo) : "---";
     const model = creative.model ? creative.model.split('/')[1] : "Standard"; // AST
 
-    // Determine bar color based on Dissonance (High Dissonance = Red/Orange, Low = Green/Blue)
-    // Actually, distinct colors for Neumorphism
     const items = [
         { label: "LYRICAL SENTIMENT", value: lySentiment },
         { label: "AUDIO MODEL", value: model },
-        { label: "BPM", value: tempo }
+        { label: "BPM", value: tempo },
+        { label: "NETWORK CENTRALITY", value: artistCentrality }
     ];
 
+    // Construct Graph Data for Network View
+    const graphData = useMemo(() => {
+        const nodes = [{ id: "This Track", group: "Track" }];
+        const links = [];
+
+        // Add Artist Node
+        if (result?.metadata?.artist_id) {
+            nodes.push({ id: result.metadata.artist_id, group: "Artist" });
+            links.push({ source: "This Track", target: result.metadata.artist_id });
+        }
+
+        // Add Vibe Node
+        if (vibe !== "Undetected") {
+            nodes.push({ id: vibe, group: "Genre" });
+            links.push({ source: "This Track", target: vibe });
+        }
+
+        return { nodes, links };
+    }, [result, vibe]);
+
     return (
-        <div className="h-full animate-in fade-in duration-700 flex flex-col space-y-6">
+        <div className="h-full animate-in fade-in duration-700 flex flex-col space-y-6 overflow-y-auto pb-10">
 
             {/* 1. Main Vibe Card (Neumorphic) */}
             <div className="neu-card">
@@ -33,12 +56,12 @@ const AnalysisDashboard = ({ result }) => {
                         CONFIDENCE: HIGH
                     </div>
                 </div>
-                <div className="text-3xl md:text-5xl font-black text-neu-text tracking-tighter uppercase leading-none">
+                <div className="text-3xl md:text-5xl font-black text-neu-text tracking-tighter uppercase leading-none break-words">
                     {vibe}
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 {/* 2. Dissonance Meter */}
                 <div className="neu-card flex flex-col justify-center">
@@ -76,15 +99,28 @@ const AnalysisDashboard = ({ result }) => {
                             </div>
                         ))}
                     </div>
-
-                    <div className="mt-4 pt-4 border-t border-[#222]">
-                        <p className="text-[10px] text-gray-600 font-mono">
-                            AI MODEL: MIT/AST-FINETUNED<br />
-                            NLP MODEL: DISTILBERT-SST-2
-                        </p>
-                    </div>
                 </div>
             </div>
+
+            {/* 4. Visual Intelligence Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                {/* Vibe Radar */}
+                <div className="neu-card min-h-[300px] flex flex-col">
+                    <h3 className="text-gray-500 text-xs uppercase tracking-widest mb-2">Holographic Score</h3>
+                    <VibeRadar data={result} />
+                </div>
+
+                {/* Network Graph */}
+                <div className="neu-card min-h-[300px] flex flex-col">
+                    <h3 className="text-gray-500 text-xs uppercase tracking-widest mb-2">Knowledge Graph (Local)</h3>
+                    <div className="flex-grow relative">
+                        <NetworkGraph data={graphData} width={400} height={300} />
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     );
 };
